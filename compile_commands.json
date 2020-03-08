@@ -1,0 +1,5 @@
+[
+  { "directory": "/home/user/Dokumente/openglproject",
+    "command": "clang++ -c main.cpp -I/usr/include/SDL2 -o obj/main.o && clang++ -o bin/opengl obj/main.o -L/usr/include -lSDL2 -lOpenGL -lGLEW",
+    "file": "main.cpp" },
+]
