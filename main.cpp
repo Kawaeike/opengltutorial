@@ -105,7 +105,10 @@ int main(int argc, char* argv[])
     GLuint program, vbo, vertexs[1];
     SDL_GLContext Context;
 	SDL_Event e;
-	SDL_Window* window;                    
+	SDL_Window* window;
+	int timeValue;
+	float greenValue = 0.5f;
+	int vertexColorLocation;       
 	const Uint8* state = SDL_GetKeyboardState(NULL);
 	bool x = false;
 
@@ -154,9 +157,10 @@ int main(int argc, char* argv[])
 		glClear(GL_COLOR_BUFFER_BIT);
     	glUseProgram(program);
 
-		float timeValue = SDL_GetTicks();
-		float greenValue = sin(timeValue) / 0.5f + 0.5f;
-		int vertexColorLocation = glGetUniformLocation(program, "ourColor");
+		timeValue = SDL_GetTicks();
+			greenValue = sin(timeValue/300) / 5.0f + 0.8f;
+
+		vertexColorLocation = glGetUniformLocation(program, "ourColor");
     	glUniform4f(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f);
 
 		glBindVertexArray(vertexs[0]);	
